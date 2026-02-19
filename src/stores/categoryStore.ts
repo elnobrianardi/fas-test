@@ -25,7 +25,7 @@ export const useCategoryStore = create<CategoryState>((set, get) => ({
   isFetching: false,
 
   fetchCategories: async () => {
-    set({ isFetching: true }); // PAKAI INI UNTUK TABEL
+    set({ isFetching: true }); 
     try {
       const response = await fetch(API_URL);
       const data = await response.json();
@@ -36,8 +36,8 @@ export const useCategoryStore = create<CategoryState>((set, get) => ({
   },
 
   addCategory: async (name) => {
-    set({ isLoading: true }); // PAKAI INI UNTUK TOMBOL
-    await sleep(1000); // Jeda biar spinner kelihatan pro
+    set({ isLoading: true }); 
+    await sleep(1000); 
     
     try {
       const response = await fetch(API_URL, {
@@ -51,8 +51,6 @@ export const useCategoryStore = create<CategoryState>((set, get) => ({
 
       if (response.ok) {
         const newData = await response.json();
-        // JANGAN panggil fetchCategories() lagi. 
-        // Langsung selipkan data baru ke array biar tabel gak kedip.
         set((state) => ({ 
           categories: [...state.categories, newData] 
         }));

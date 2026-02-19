@@ -1,5 +1,30 @@
 {
-  "posts": [],
+  "posts": [
+    {
+      "id": "8eca",
+      "title": "asd",
+      "categoryId": "9328",
+      "content": "asd",
+      "slug": "asd",
+      "createdAt": "2026-02-19T09:15:50.540Z"
+    },
+    {
+      "id": "8bce",
+      "title": "asd",
+      "categoryId": "9328",
+      "content": "asd",
+      "slug": "asd",
+      "createdAt": "2026-02-19T09:16:22.325Z"
+    },
+    {
+      "id": "97d7",
+      "title": "sad",
+      "categoryId": "5d03",
+      "content": "asd",
+      "slug": "sad",
+      "createdAt": "2026-02-19T09:20:39.341Z"
+    }
+  ],
   "categories": [
     {
       "id": "5d03",

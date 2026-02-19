@@ -4,6 +4,8 @@ import Login from "./pages/Login";
 import AdminLayout from "./layouts/AdminLayout";
 import Categories from "./pages/admin/Categories";
 import { Toaster } from "sonner";
+import Posts from "./pages/Posts";
+import CreatePost from "./components/CreatePost";
 
 // Mock Pages (Nanti kamu buat file aslinya)
 const Home = () => (
@@ -54,7 +56,10 @@ function App() {
           <Route element={<AdminLayout />}>
             <Route index element={<Navigate to="/admin/dashboard" replace />} />
             <Route path="dashboard" element={<Dashboard />} />
-            <Route path="posts" element={<PostsManager />} />
+            <Route path="posts">
+              <Route index element={<Posts />} />
+              <Route path="create" element={<CreatePost />} />
+            </Route>
             <Route path="categories" element={<Categories />} />
             <Route path="change-password" element={<ChangePassword />} />
           </Route>
