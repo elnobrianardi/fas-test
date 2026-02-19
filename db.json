@@ -1,0 +1,23 @@
+{
+  "posts": [],
+  "categories": [
+    {
+      "id": "5d03",
+      "name": "Fashion",
+      "slug": "fashion"
+    },
+    {
+      "id": "9328",
+      "name": "Tech",
+      "slug": "tech"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "email": "admin@fas.id",
+      "password": "password123",
+      "name": "Admin FAS"
+    }
+  ]
+}
