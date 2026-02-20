@@ -20,7 +20,7 @@ interface CategoryState {
 
 const API_URL = "http://localhost:5000/categories";
 
-export const useCategoryStore = create<CategoryState>((set, get) => ({
+export const useCategoryStore = create<CategoryState>((set) => ({
   categories: [],
   isLoading: false,
   isFetching: false,
@@ -77,9 +77,10 @@ export const useCategoryStore = create<CategoryState>((set, get) => ({
   },
 
   updateCategory: async (id: string, name: string) => {
+    set({ isLoading: true });
   try {
     const slug = name.toLowerCase().replace(/\s+/g, '-');
-    const response = await fetch(`http://localhost:5000/categories/${id}`, {
+    const response = await fetch(`${API_URL}/${id}`, {
       method: "PATCH", 
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name, slug }),
@@ -89,7 +90,6 @@ export const useCategoryStore = create<CategoryState>((set, get) => ({
 
     const updatedData = await response.json();
 
-    // Update state lokal supaya UI berubah seketika
     set((state) => ({
       categories: state.categories.map((cat) => 
         cat.id === id ? updatedData : cat
@@ -98,6 +98,8 @@ export const useCategoryStore = create<CategoryState>((set, get) => ({
   } catch (error) {
     console.error(error);
     throw error; 
+  } finally {
+    set({ isLoading: false });
   }
 },
 }));

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { usePostStore } from '@/stores/postStore';
 import { useCategoryStore } from '@/stores/categoryStore';
 import { Calendar, Tag, ArrowLeft, Share2, Clock } from 'lucide-react';

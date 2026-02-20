@@ -11,12 +11,7 @@ import PostDetail from "./pages/public/PostDetail";
 import Register from "./pages/Auth/Register";
 import ChangePassword from "./pages/admin/settings/ChangePassword";
 import CategoryPosts from "./pages/public/CategoryPosts";
-
-const Dashboard = () => (
-  <div className="p-8">
-    <h1>CMS Dashboard</h1>
-  </div>
-);
+import Dashboard from "./pages/admin/Dashboard";
 
 function App() {
   return (

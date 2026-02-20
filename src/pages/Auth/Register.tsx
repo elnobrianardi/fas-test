@@ -32,6 +32,7 @@ const Register = () => {
       navigate('/login');
     }
   } catch (error) {
+    console.error(error)
     toast.error("Gagal mendaftar");
   } finally {
     setIsLoading(false);

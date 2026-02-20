@@ -25,10 +25,10 @@ const CreatePost = () => {
   const [formData, setFormData] = useState({
     title: "",
     categoryId: "",
-    shortDescription: "", 
+    shortDescription: "",
     content: "",
     image: "",
-    thumbnail: "", 
+    thumbnail: "",
   });
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -37,40 +37,39 @@ const CreatePost = () => {
 
     const toastId = toast.loading("Uploading image to cloud...");
     const body = new FormData();
-    body.append('image', file);
+    body.append("image", file);
+    const apiKey = import.meta.env.VITE_IMGBB_API_KEY;
 
     try {
-      const res = await fetch(`https://api.imgbb.com/1/upload?key=128aa19f55b4860ce9814f749f910113`, {
+      const res = await fetch(`https://api.imgbb.com/1/upload?key=${apiKey}`, {
         method: "POST",
-        body: body
+        body: body,
       });
       const data = await res.json();
-      
-      // Ambil URL asli dan Thumbnail sekaligus
-      setFormData({ 
-        ...formData, 
+
+      setFormData((prev) => ({
+        ...prev,
         image: data.data.url,
-        thumbnail: data.data.thumb.url 
-      });
+        thumbnail: data.data.thumb.url,
+      }));
       toast.success("Image & Thumbnail uploaded!", { id: toastId });
-    } catch (error) {
+    } catch (err) {
+      console.error(err); 
       toast.error("Upload failed", { id: toastId });
     }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // VALIDASI STANDAR 
+
     if (!formData.title || !formData.categoryId || !formData.content || !formData.shortDescription) {
-      return toast.error("Semua field (termasuk deskripsi pendek) wajib diisi!");
+      return toast.error("Semua field wajib diisi!");
     }
 
     setIsLoading(true);
     const toastId = toast.loading("Publishing post...");
 
     try {
-      // Auto-generate Slug yang lebih bersih
       const slug = formData.title
         .toLowerCase()
         .trim()
@@ -78,15 +77,15 @@ const CreatePost = () => {
         .replace(/[\s_-]+/g, "-")
         .replace(/^-+|-+$/g, "");
 
-      await addPost({ 
-        ...formData, 
+      await addPost({
+        ...formData,
         slug,
-        createdAt: new Date().toISOString() 
       });
 
       toast.success("Post published!", { id: toastId });
       navigate("/admin/posts");
-    } catch (error) {
+    } catch (err) {
+      console.error(err);
       toast.error("Failed to publish", { id: toastId });
     } finally {
       setIsLoading(false);
@@ -105,8 +104,6 @@ const CreatePost = () => {
       <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="md:col-span-2 space-y-4">
           <div className="bg-white p-6 border rounded-xl shadow-sm space-y-4">
-            
-            {/* Title */}
             <div className="space-y-2">
               <Label>Post Title</Label>
               <Input
@@ -116,18 +113,16 @@ const CreatePost = () => {
               />
             </div>
 
-            {/* Short desc  */}
             <div className="space-y-2">
               <Label>Short Description</Label>
               <Textarea
-                placeholder="Ringkasan singkat untuk kartu di halaman depan..."
+                placeholder="Ringkasan singkat..."
                 className="min-h-[80px] resize-none"
                 value={formData.shortDescription}
                 onChange={(e) => setFormData({ ...formData, shortDescription: e.target.value })}
               />
             </div>
 
-            {/* Cover image */}
             <div className="space-y-2">
               <Label>Cover Image</Label>
               <Input type="file" accept="image/*" onChange={handleFileChange} />
@@ -138,7 +133,6 @@ const CreatePost = () => {
               )}
             </div>
 
-            {/* Content */}
             <div className="space-y-2">
               <Label>Full Content</Label>
               <Textarea
@@ -151,7 +145,6 @@ const CreatePost = () => {
           </div>
         </div>
 
-        {/* Sidebar */}
         <div className="space-y-4">
           <div className="bg-white p-6 border rounded-xl shadow-sm space-y-4">
             <div className="space-y-2">
@@ -162,7 +155,9 @@ const CreatePost = () => {
                 </SelectTrigger>
                 <SelectContent>
                   {categories.map((cat) => (
-                    <SelectItem key={cat.id} value={cat.id}>{cat.name}</SelectItem>
+                    <SelectItem key={cat.id} value={cat.id}>
+                      {cat.name}
+                    </SelectItem>
                   ))}
                 </SelectContent>
               </Select>

@@ -22,22 +22,24 @@ const Home = () => {
   }, []);
 
   // Reset ke halaman 1 setiap kali filter berubah
-  useEffect(() => {
-    setCurrentPage(1);
-  }, [searchQuery, selectedCategory]);
+ const handleFilterChange = (type: "search" | "category", value: string) => {
+  if (type === "search") setSearchQuery(value);
+  if (type === "category") setSelectedCategory(value);
+  setCurrentPage(1); 
+};
 
   const getCategoryData = (id: string) => {
     return categories.find((c) => c.id === id);
   };
 
-  // 1. Logika Filtering
+  // Filtering
   const filteredPosts = posts.filter((post) => {
     const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesCategory = selectedCategory === "all" || post.categoryId === selectedCategory;
     return matchesSearch && matchesCategory;
   });
 
-  // 2. Logika Pagination
+  // Pagination
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
@@ -63,13 +65,13 @@ const Home = () => {
                 placeholder="Cari judul artikel..."
                 className="pl-12 h-15 py-7 w-full bg-white border-zinc-200 shadow-sm rounded-2xl focus-visible:ring-orange-500 text-lg transition-all"
                 value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
+                onChange={(e) => handleFilterChange("search", e.target.value)} 
               />
             </div>
 
             <div className="flex flex-wrap items-center justify-center gap-2">
               <button
-                onClick={() => setSelectedCategory("all")}
+                onClick={() => handleFilterChange("category", "all")}
                 className={`px-5 py-2 rounded-full text-sm font-medium transition-all border ${
                   selectedCategory === "all"
                     ? "bg-orange-500 border-orange-500 text-white shadow-md shadow-orange-200"
@@ -81,7 +83,7 @@ const Home = () => {
               {categories.map((cat) => (
                 <button
                   key={cat.id}
-                  onClick={() => setSelectedCategory(cat.id)}
+                  onClick={() => handleFilterChange("category", cat.id)}
                   className={`px-5 py-2 rounded-full text-sm font-medium transition-all border capitalize ${
                     selectedCategory === cat.id
                       ? "bg-orange-500 border-orange-500 text-white shadow-md shadow-orange-200"

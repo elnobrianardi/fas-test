@@ -57,7 +57,7 @@ const Categories = () => {
     }
   }, [currentItems.length, currentPage, isFetching]);
 
-  const handleAdd = async () => {
+ const handleAdd = async () => {
     if (!newCatName.trim()) return toast.error("Name is required");
     setIsSubmitting(true);
     try {
@@ -65,7 +65,8 @@ const Categories = () => {
       setIsOpen(false);
       setNewCatName("");
       toast.success(`Kategori "${newCatName}" berhasil ditambahkan!`);
-    } catch (error) {
+    } catch (err) {
+      console.error(err); 
       toast.error("Gagal menambahkan kategori");
     } finally {
       setIsSubmitting(false);
@@ -76,8 +77,15 @@ const Categories = () => {
     const toastId = toast.loading(`Menghapus ${name}...`);
     try {
       await deleteCategory(id);
+      
+      // UX Fix: Jika ini item terakhir di halaman saat ini (dan bukan halaman 1), mundur 1 halaman
+      if (currentItems.length === 1 && currentPage > 1) {
+        setCurrentPage((prev) => prev - 1);
+      }
+      
       toast.warning(`Kategori ${name} telah dihapus.`, { id: toastId });
-    } catch (error) {
+    } catch (err) {
+      console.error(err);
       toast.error("Gagal menghapus kategori", { id: toastId });
     }
   };
@@ -89,7 +97,8 @@ const Categories = () => {
       await updateCategory(editingCat.id, editingCat.name);
       setEditingCat(null);
       toast.success("Category updated!", { id: toastId });
-    } catch (error) {
+    } catch (err) {
+      console.error(err);
       toast.error("Failed to update", { id: toastId });
     }
   };
@@ -160,7 +169,7 @@ const Categories = () => {
                 </TableCell>
               </TableRow>
             ) : (
-              currentItems.map((cat: any, index: number) => (
+              currentItems.map((cat: { id: string; name: string; slug: string }, index: number) => (
                 <TableRow key={cat.id} className="hover:bg-zinc-50/50 transition-colors">
                   <TableCell className="text-center text-zinc-400 font-medium">
                     {indexOfFirstItem + index + 1}

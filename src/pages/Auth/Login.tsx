@@ -47,6 +47,7 @@ const Login = () => {
       toast.error("Email atau Password salah!");
     }
   } catch (error) {
+    console.error(error);
     toast.error("Terjadi kesalahan sistem");
   } finally {
     setIsLoading(false);

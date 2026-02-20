@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { usePostStore } from "@/stores/postStore";
 import { useCategoryStore } from "@/stores/categoryStore";
 import { Button } from "@/components/ui/button";
 import {
@@ -29,13 +28,14 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
+import { usePostStore, type Post } from "@/stores/postStore";
 
 const Posts = () => {
   const { posts, fetchPosts, deletePost, isFetching, updatePost } =
     usePostStore();
   const { categories, fetchCategories } = useCategoryStore();
   const navigate = useNavigate();
-  const [editingPost, setEditingPost] = useState<any | null>(null);
+  const [editingPost, setEditingPost] = useState<Post | null>(null);
 
   // Pagination State
   const [currentPage, setCurrentPage] = useState(1);
@@ -46,20 +46,18 @@ const Posts = () => {
     fetchCategories();
   }, [fetchPosts, fetchCategories]);
 
-  // Hitung data untuk halaman aktif
   const totalPages = Math.ceil(posts.length / itemsPerPage);
+
+  const validPage = posts.length > 0 ? Math.min(currentPage, totalPages) : 1;
+
+  if (currentPage !== validPage && validPage > 0) {
+    setCurrentPage(validPage);
+  }
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
 
   // Ambil data dari state utama untuk di-render sesuai page
   const currentItems = posts.slice(indexOfFirstItem, indexOfLastItem);
-
-  // UX Fix: Jika user menghapus item terakhir di halaman terakhir, otomatis mundur 1 halaman
-  useEffect(() => {
-    if (currentPage > 1 && currentItems.length === 0 && !isFetching) {
-      setCurrentPage((prev) => prev - 1);
-    }
-  }, [currentItems.length, currentPage, isFetching]);
 
   const getCategoryName = (id: string) => {
     return categories.find((c) => c.id === id)?.name || "Uncategorized";
@@ -71,6 +69,7 @@ const Posts = () => {
       await deletePost(id);
       toast.warning("Post Deleted", { id: toastId });
     } catch (error) {
+      console.error(error);
       toast.error("Failed to delete", { id: toastId });
     }
   };
@@ -82,23 +81,28 @@ const Posts = () => {
     const toastId = toast.loading("Uploading new image...");
     const formData = new FormData();
     formData.append("image", file);
+    const apiKey = import.meta.env.VITE_IMGBB_API_KEY;
 
     try {
       const response = await fetch(
-        "https://api.imgbb.com/1/upload?key=128aa19f55b4860ce9814f749f910113",
+        `https://api.imgbb.com/1/upload?key=${apiKey}`,
         { method: "POST", body: formData },
       );
       const result = await response.json();
 
       if (result.success) {
-        setEditingPost({
-          ...editingPost,
-          image: result.data.url,
-          thumbnail: result.data.thumb.url,
+        setEditingPost((prev) => {
+          if (!prev) return null;
+          return {
+            ...prev,
+            image: result.data.url,
+            thumbnail: result.data.thumb.url,
+          };
         });
         toast.success("Image updated!", { id: toastId });
       }
     } catch (error) {
+      console.error(error);
       toast.error("Upload failed", { id: toastId });
     }
   };
@@ -151,7 +155,7 @@ const Posts = () => {
                 </TableCell>
               </TableRow>
             ) : (
-              currentItems.map((post) => (
+              currentItems.map((post: Post) => (
                 <TableRow key={post.id} className="hover:bg-zinc-50/50">
                   <TableCell>
                     <div className="w-12 h-12 rounded-lg border bg-zinc-100 overflow-hidden">
@@ -262,7 +266,7 @@ const Posts = () => {
         open={!!editingPost}
         onOpenChange={(open) => !open && setEditingPost(null)}
       >
-        <DialogContent className="max-w-2xl">
+        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
           {" "}
           {/* Dibuat lebih lebar karena ada textarea */}
           <DialogHeader>
@@ -277,7 +281,9 @@ const Posts = () => {
               <Input
                 value={editingPost?.title || ""}
                 onChange={(e) =>
-                  setEditingPost({ ...editingPost, title: e.target.value })
+                  setEditingPost((prev) =>
+                    prev ? { ...prev, title: e.target.value } : null,
+                  )
                 }
               />
             </div>
@@ -292,11 +298,9 @@ const Posts = () => {
                 placeholder="Ringkasan singkat post..."
                 value={editingPost?.shortDescription || ""}
                 onChange={(e) =>
-                  setEditingPost({
-                    ...editingPost,
-
-                    shortDescription: e.target.value,
-                  })
+                  setEditingPost((prev) =>
+                    prev ? { ...prev, shortDescription: e.target.value } : null,
+                  )
                 }
               />
 
@@ -314,7 +318,9 @@ const Posts = () => {
                 className="w-full p-2 border rounded-md text-sm"
                 value={editingPost?.categoryId || ""}
                 onChange={(e) =>
-                  setEditingPost({ ...editingPost, categoryId: e.target.value })
+                  setEditingPost((prev) =>
+                    prev ? { ...prev, categoryId: e.target.value } : null,
+                  )
                 }
               >
                 {categories.map((cat) => (
@@ -368,12 +374,14 @@ const Posts = () => {
                 className="w-full p-2 border rounded-md min-h-[200px] text-sm"
                 value={editingPost?.content || ""}
                 onChange={(e) =>
-                  setEditingPost({ ...editingPost, content: e.target.value })
+                  setEditingPost((prev) =>
+                    prev ? { ...prev, content: e.target.value } : null,
+                  )
                 }
               />
             </div>
           </div>
-          <DialogFooter>
+          <DialogFooter className="sticky bottom-0 bg-white pt-2 border-t">
             <Button variant="outline" onClick={() => setEditingPost(null)}>
               Cancel
             </Button>
@@ -381,18 +389,25 @@ const Posts = () => {
             <Button
               className="bg-orange-500 hover:bg-orange-600"
               onClick={async () => {
+                if (!editingPost) return;
+
                 const toastId = toast.loading("Updating post...");
 
                 try {
-                  const slug = editingPost.title
+                  const title = editingPost.title || "";
+                  const slug = title
                     .toLowerCase()
-                    .replace(/[^\w\s-]/g, "") // Hapus karakter spesial selain huruf/angka/spasi
-                    .replace(/[\s_-]+/g, "-") // Ganti spasi/underscore jadi satu dash
-                    .replace(/^-+|-+$/g, ""); // Hapus dash di awal/akhir
+                    .replace(/[^\w\s-]/g, "")
+                    .replace(/[\s_-]+/g, "-")
+                    .replace(/^-+|-+$/g, "");
+
+                  // 3. Kirim ke API
                   await updatePost(editingPost.id, { ...editingPost, slug });
+
                   setEditingPost(null);
                   toast.success("Post updated!", { id: toastId });
                 } catch (error) {
+                  console.error(error);
                   toast.error("Failed to update post", { id: toastId });
                 }
               }}
