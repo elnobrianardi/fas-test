@@ -120,7 +120,7 @@ const Home = () => {
                     <Link to={`/post/${post.slug}`} className="absolute inset-0 z-0" />
                     <div className="aspect-video bg-zinc-100 overflow-hidden relative">
                       <img
-                        src={post.thumbnail || post.image || `https://picsum.photos/seed/${post.id}/600/400`}
+                        src={post.image || `https://picsum.photos/seed/${post.id}/600/400`}
                         alt={post.title}
                         className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
                       />
@@ -144,7 +144,7 @@ const Home = () => {
                       <h2 className="text-xl font-bold text-zinc-900 leading-tight group-hover:text-orange-500 transition-colors">
                         {post.title}
                       </h2>
-                      <p className="text-zinc-500 text-sm line-clamp-2">
+                      <p className="text-zinc-500 text-sm">
                         {post.shortDescription || post.content.substring(0, 100) + "..."}
                       </p>
                       <div className="pt-2 flex items-center text-sm font-semibold text-orange-600">

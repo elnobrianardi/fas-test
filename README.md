@@ -26,8 +26,7 @@ Ikuti langkah-langkah berikut untuk menjalankan proyek di lokal:
 
 ### 1. Clone Repository
 ```
-git clone [https://github.com/elnobrianardi/fas-test.git](https://github.com/elnobrianardi/fas-test.git)
-cd fas-test
+git clone https://github.com/elnobrianardi/fas-test.git
 ```
 
 ### 2. Install Dependencies

@@ -1,66 +1,169 @@
 {
   "posts": [
     {
-      "id": "8eca",
-      "title": "d",
+      "id": "a7ab",
+      "title": "Tren \"Quiet Luxury\": Mengapa Tampilan Minimalis Sedang Menjadi Primadona?",
       "categoryId": "5d03",
-      "content": "asds",
-      "slug": "d",
-      "createdAt": "2026-02-19T09:15:50.540Z"
+      "shortDescription": "Mengenal lebih dalam tren 'Quiet Luxury' yang mengutamakan kualitas bahan dan potongan tanpa logo mencolok.",
+      "content": "Quiet Luxury atau kemewahan yang tenang telah bergeser dari sekadar tren menjadi sebuah gaya hidup di tahun 2026. Berbeda dengan era logomania yang memamerkan merek besar di seluruh pakaian, quiet luxury lebih fokus pada kualitas bahan, jahitan yang presisi, dan palet warna netral.\n\nApa Itu Quiet Luxury?\nSecara sederhana, ini adalah cara berpakaian yang terlihat mahal tanpa harus berteriak bahwa itu mahal. Bayangkan kemeja sutra tanpa logo, celana kain dengan potongan sempurna, atau mantel wol berkualitas tinggi.\n\nMengapa Tren Ini Meledak?\nKeberlanjutan (Sustainability): Orang mulai bosan dengan fast fashion. Mereka lebih memilih membeli satu potong pakaian berkualitas yang tahan 10 tahun daripada sepuluh baju murah yang rusak dalam sebulan.\n\nEstetika \"Old Money\": Pengaruh media sosial membuat gaya minimalis klasik ala keluarga bangsawan Eropa kembali diminati oleh generasi muda.\n\nKeserbagunaan: Pakaian minimalis sangat mudah dipadupadankan (mix and match), membuatnya cocok untuk acara formal maupun santai.\n\nCara Memulai Gaya Ini:\nPilih Warna Bumi: Fokus pada warna krem, putih tulang, navy, abu-abu, dan hitam.\n\nInvestasi pada Bahan: Cari pakaian berbahan linen, cashmere, atau organic cotton.\n\nAksesori Simpel: Cukup gunakan jam tangan kulit klasik atau perhiasan emas tipis.",
+      "image": "https://i.ibb.co/5hgvyWYJ/Nr-SVe-J3-Mywf-W5-Zkme8-Rs-MD.jpg",
+      "thumbnail": "https://i.ibb.co/hFJHjRXT/Nr-SVe-J3-Mywf-W5-Zkme8-Rs-MD.jpg",
+      "slug": "tren-quiet-luxury-mengapa-tampilan-minimalis-sedang-menjadi-primadona",
+      "createdAt": "2026-02-20T06:50:50.932Z"
     },
     {
-      "id": "8bce",
-      "title": "asd",
-      "categoryId": "5d03",
-      "content": "asd",
-      "slug": "asd",
-      "createdAt": "2026-02-19T09:16:22.325Z"
-    },
-    {
-      "id": "97d7",
-      "title": "sad",
-      "categoryId": "5d03",
-      "content": "asd",
-      "slug": "sad",
-      "createdAt": "2026-02-19T09:20:39.341Z",
-      "image": "https://i.ibb.co/n8s9xTvq/bitzaro2.png"
-    },
-    {
-      "id": "4430",
-      "title": "fsa",
+      "id": "31a3",
+      "title": "Mengapa Local-First Development Menjadi Standar Baru Aplikasi Modern?",
       "categoryId": "9328",
-      "content": "asdas",
-      "slug": "fsa",
-      "createdAt": "2026-02-20T02:13:54.297Z"
+      "shortDescription": "Mengutamakan kecepatan dan ketersediaan data offline tanpa mengorbankan sinkronisasi cloud. Revolusi bagi pengguna di area minim sinyal.",
+      "content": "Apa itu Local-First?\nBerbeda dengan aplikasi tradisional yang sangat bergantung pada API server, aplikasi local-first menyimpan data di perangkat pengguna (seperti database SQLite di browser) dan melakukan sinkronisasi ke cloud di latar belakang.\n\nKeunggulan Utama:\nKecepatan Instan: Tidak ada lagi loading spinner yang membosankan karena data dibaca langsung dari memori perangkat.\n\nPrivasi Lebih Terjaga: Pengguna memiliki kontrol penuh atas data yang tersimpan di perangkat mereka.\n\nKolaborasi Real-time: Dengan teknologi seperti CRDT (Conflict-free Replicated Data Types), dua orang bisa mengedit dokumen yang sama secara offline, dan sistem akan menyatukan perubahannya secara otomatis saat internet kembali tersedia.\n\nBagi pengembang web di tahun 2026, menguasai konsep ini adalah kewajiban jika ingin menciptakan aplikasi yang setara dengan kualitas aplikasi desktop asli.",
+      "image": "https://i.ibb.co/MyfZp4JL/616fb657512895ebe4f0e1fb-close-up-man-writing-code-laptop-1.jpg",
+      "thumbnail": "https://i.ibb.co/nqB6fvKS/616fb657512895ebe4f0e1fb-close-up-man-writing-code-laptop-1.jpg",
+      "slug": "mengapa-local-first-development-menjadi-standar-baru-aplikasi-modern",
+      "createdAt": "2026-02-20T06:57:23.012Z"
     },
     {
-      "id": "cb5f",
-      "title": "qwe asdzxc",
+      "id": "8a65",
+      "title": "Sinema Interaktif: Masa Depan Menonton Film Bukan Lagi Sekadar Duduk Diam",
+      "categoryId": "ac71",
+      "shortDescription": "Menjelajahi teknologi baru di mana penonton bisa mengontrol alur cerita film melalui perangkat VR dan sensor haptik.",
+      "content": "Bayangkan Anda sedang menonton film detektif, dan Anda sendiri yang harus memutuskan pintu mana yang akan dibuka oleh sang karakter utama. Sinema interaktif kini telah mencapai puncaknya di tahun 2026.\n\nMelampaui Bandersnatch\nJika beberapa tahun lalu kita hanya mengenal pilihan A atau B lewat remote TV, sekarang teknologi VR memungkinkan penonton untuk \"masuk\" ke dalam set film. Pilihan Anda tidak lagi lewat tombol, melainkan lewat interaksi fisik dengan objek di dalam dunia digital tersebut.\n\nTantangan Bagi Sutradara\nTentu saja, hal ini menciptakan tantangan baru bagi penulis skenario. Mereka harus menulis ribuan kemungkinan alur cerita (branching narratives). Satu film kini bisa memiliki hingga 50 akhir cerita yang berbeda tergantung pada tindakan penonton selama film berlangsung.\n\nMasa Depan Bioskop\nBeberapa bioskop mulai mengubah ruang teater mereka menjadi area interaktif bertema, di mana kursi penonton dilengkapi dengan sensor gerak yang memengaruhi jalannya cerita secara kolektif berdasarkan suara terbanyak di dalam ruangan.",
+      "image": "https://i.ibb.co/FqNw22ds/cj-cgv-4k-vr.webp",
+      "thumbnail": "https://i.ibb.co/M5WVrrJ8/cj-cgv-4k-vr.webp",
+      "slug": "sinema-interaktif-masa-depan-menonton-film-bukan-lagi-sekadar-duduk-diam",
+      "createdAt": "2026-02-20T06:58:10.084Z"
+    },
+    {
+      "id": "f6ca",
+      "title": "Revolusi Modest Wear di Panggung Fashion Global 2026",
       "categoryId": "5d03",
-      "content": "asd",
-      "image": "https://i.ibb.co/201zMgvR/edusity-3.png",
-      "slug": "qwe-asdzxc",
-      "createdAt": "2026-02-20T02:18:29.729Z"
+      "shortDescription": "Bagaimana busana santun bertransformasi dari kebutuhan religius menjadi tren gaya hidup inklusif yang mendominasi pasar Eropa dan Amerika.",
+      "content": "Tahun 2026 menjadi titik balik bagi industri modest wear. Tidak lagi dipandang sebagai pasar ceruk (niche), busana santun kini menjadi pilar utama di berbagai pekan mode dunia seperti Paris dan Milan.\n\n1. Inovasi Siluet dan Material\nDesainer mulai bereksperimen dengan teknik layering yang cerdas tanpa membuat pemakainya merasa gerah. Penggunaan bahan berbasis serat bambu dan teknologi air-cooling pada kain satin menjadi kunci utama kenyamanan busana tertutup di iklim tropis maupun Eropa.\n\n2. Inklusivitas yang Meluas\nDaya tarik modest wear kini melampaui batasan latar belakang agama. Banyak orang memilih gaya ini karena alasan estetika—siluet yang longgar memberikan kesan elegan, misterius, dan berwibawa secara bersamaan.\n\n3. Keberlanjutan dalam Jahitan\nBanyak brand modest wear lokal kini mulai menerapkan zero-waste pattern. Karena kain yang dibutuhkan biasanya lebih banyak, efisiensi pemotongan menjadi krusial untuk menjaga etika produksi di tahun 2026.",
+      "image": "https://i.ibb.co/0jzhjQQs/202509281508-main-cropped-1759046923.jpg",
+      "thumbnail": "https://i.ibb.co/TBNmBrrW/202509281508-main-cropped-1759046923.jpg",
+      "slug": "revolusi-modest-wear-di-panggung-fashion-global-2026",
+      "createdAt": "2026-02-20T07:01:17.054Z"
     },
     {
-      "id": "74f5",
-      "title": "zxczxv",
-      "categoryId": "9328",
-      "content": "sasczxasd",
-      "image": "https://i.ibb.co/7dvwSPPq/apple2.png",
-      "slug": "zxczxv",
-      "createdAt": "2026-02-20T03:07:40.805Z"
+      "id": "944f",
+      "title": "Seni \"Slow Living\" di Tengah Hiruk Pikuk Kota Megapolitan",
+      "categoryId": "8d24",
+      "shortDescription": "Mengapa generasi produktif mulai meninggalkan budaya 'hustle' dan beralih ke gaya hidup yang lebih lambat namun bermakna.",
+      "content": "Di tahun 2026, kesuksesan tidak lagi hanya diukur dari seberapa sibuk kalender Anda. Muncul sebuah gerakan baru yang disebut Slow Living.\n\nMenemukan Ritme yang Tepat\nSlow living bukan berarti malas atau tidak bekerja. Ini adalah tentang kesadaran untuk melakukan segala sesuatu dengan kualitas, bukan sekadar kecepatan. Mulai dari menikmati kopi pagi tanpa gangguan ponsel, hingga memilih hobi yang membutuhkan kesabaran seperti merawat tanaman atau kerajinan tangan.\n\nDampak pada Kesehatan Mental\nPenelitian terbaru menunjukkan bahwa individu yang menerapkan batasan tegas antara waktu kerja dan waktu pribadi memiliki tingkat kreativitas 40% lebih tinggi. Dengan memberikan ruang bagi otak untuk \"beristirahat\" dari stimulasi digital, kita sebenarnya sedang mengisi ulang energi untuk ide-ide yang lebih besar.",
+      "image": "https://i.ibb.co/LX6rRJtk/354876-1000x667-slow-living-2212341321.jpg",
+      "thumbnail": "https://i.ibb.co/0RZK2FMD/354876-1000x667-slow-living-2212341321.jpg",
+      "slug": "seni-slow-living-di-tengah-hiruk-pikuk-kota-megapolitan",
+      "createdAt": "2026-02-20T07:03:42.092Z"
     },
     {
-      "id": "c06f",
-      "title": "aszxc",
+      "id": "a284",
+      "title": "Destinasi Tersembunyi: Menjelajahi Keajaiban Alam Sumba Timur",
+      "categoryId": "4520",
+      "shortDescription": "Lebih dari sekadar pantai, Sumba Timur menawarkan perpaduan budaya megalitikum dan savana yang eksotis bagi para petualang.",
+      "content": "Sumba Timur bukan sekadar destinasi; ia adalah perjalanan waktu. Saat Anda mendarat di Waingapu, udara kering dan pemandangan perbukitan yang menyerupai punggung raksasa akan menyambut Anda.\n\nBukit Tenau dan Senja yang Abadi\nSalah satu titik terbaik untuk menikmati ketenangan adalah Bukit Tenau. Di sini, Anda bisa melihat hamparan bukit hijau (atau cokelat saat musim kemarau) yang seolah tak berujung. Saat matahari terbenam, langit berubah menjadi kanvas berwarna jingga dan ungu yang sangat memukau.\n\nDesa Adat Ratenggaro\nJangan lewatkan kunjungan ke desa adat dengan atap menara setinggi 15 meter. Penduduk lokal sangat ramah dan masih memegang teguh tradisi leluhur. Berkuda di tepi pantai saat air surut adalah pengalaman ikonik yang wajib Anda coba setidaknya sekali seumur hidup.",
+      "image": "https://i.ibb.co/JWWJ3z3g/620b1a0e70a9e.jpg",
+      "thumbnail": "https://i.ibb.co/ymmj4847/620b1a0e70a9e.jpg",
+      "slug": "destinasi-tersembunyi-menjelajahi-keajaiban-alam-sumba-timur",
+      "createdAt": "2026-02-20T07:04:53.383Z"
+    },
+    {
+      "id": "2b6b",
+      "title": "Mengenal Quantum Computing: Apakah Enkripsi Kita Masih Aman?",
       "categoryId": "9328",
-      "shortDescription": "aszxca",
-      "content": "zxcasdaxzc",
-      "image": "https://i.ibb.co/q333FKKZ/apple1.png",
-      "thumbnail": "https://i.ibb.co/Q333jLL5/apple1.png",
-      "slug": "aszxc",
-      "createdAt": "2026-02-20T03:09:32.604Z"
+      "shortDescription": "Tantangan keamanan siber di era komputasi kuantum dan bagaimana dunia bersiap menghadapi ancaman baru ini.",
+      "content": "Komputasi kuantum bukan lagi sekadar teori fisika di laboratorium. Perusahaan besar mulai merilis prototipe prosesor kuantum yang bisa memproses data jutaan kali lebih cepat dari superkomputer saat ini.\n\nAncaman Bagi Kriptografi\nMasalahnya, algoritma enkripsi yang kita gunakan saat ini (seperti RSA) bisa dipecahkan dalam hitungan detik oleh komputer kuantum. Inilah mengapa para ahli mulai mengembangkan Post-Quantum Cryptography (PQC) untuk melindungi data perbankan dan rahasia negara di masa depan.",
+      "image": "https://i.ibb.co/wF0CRDnB/hero-image-fit-lim-v1709587610.jpg",
+      "thumbnail": "https://i.ibb.co/1tvKLHC7/hero-image-fit-lim-v1709587610.jpg",
+      "slug": "mengenal-quantum-computing-apakah-enkripsi-kita-masih-aman",
+      "createdAt": "2026-02-20T07:06:21.068Z"
+    },
+    {
+      "id": "f633",
+      "title": "Mengapa Musik Format Analog Kembali Menjadi Primadona?",
+      "categoryId": "ac71",
+      "shortDescription": "Di era streaming yang serba praktis, piringan hitam dan kaset pita justru mengalami lonjakan penjualan tertinggi dalam dua dekade.",
+      "content": "Ada sesuatu yang tak tergantikan dari suara gesekan jarum di atas piringan hitam (vinyl). Tahun 2026 mencatat sejarah di mana penjualan fisik album musik melampaui ekspektasi para pengamat industri.\n\nKoneksi Fisik dengan Karya Seni\nBagi pendengar musik modern, memiliki piringan hitam adalah bentuk apresiasi terhadap seniman. Artwork yang besar dan pengalaman ritual saat memutar musik menciptakan koneksi emosional yang tidak didapatkan saat sekadar mengeklik tombol 'play' di aplikasi streaming.",
+      "image": "https://i.ibb.co/rKXdx6Gn/863214-1200.jpg",
+      "thumbnail": "https://i.ibb.co/zWt6XRhK/863214-1200.jpg",
+      "slug": "mengapa-musik-format-analog-kembali-menjadi-primadona",
+      "createdAt": "2026-02-20T07:15:25.791Z"
+    },
+    {
+      "id": "ac6c",
+      "title": "Upcycling: Mengubah Limbah Tekstil Menjadi High-Fashion",
+      "categoryId": "5d03",
+      "shortDescription": "Tren ramah lingkungan yang mengedepankan kreativitas dalam mengolah pakaian bekas menjadi busana baru yang bernilai tinggi.",
+      "content": "Dunia fashion mulai sadar akan dampak lingkungannya. Upcycling adalah jawaban atas masalah limbah tekstil. Desainer kini tidak lagi malu menggunakan kain perca atau pakaian lama untuk dikonstruksi ulang menjadi jaket atau gaun yang unik dan eksklusif.",
+      "image": "https://i.ibb.co/7JbQ9P0F/Fashion-Show18.jpg",
+      "thumbnail": "https://i.ibb.co/99GhM6dj/Fashion-Show18.jpg",
+      "slug": "upcycling-mengubah-limbah-tekstil-menjadi-high-fashion",
+      "createdAt": "2026-02-20T07:16:49.572Z"
+    },
+    {
+      "id": "70ef",
+      "title": "Panduan Membuat \"Smart Kitchen\" yang Efisien dan Hemat Energi",
+      "categoryId": "8d24",
+      "shortDescription": "Memanfaatkan teknologi pintar untuk mengurangi limbah makanan dan mengoptimalkan waktu memasak di dapur Anda.",
+      "content": "Dapur pintar di tahun 2026 bukan tentang kulkas yang bisa memutar musik, tapi tentang kulkas yang tahu kapan susu Anda akan kedaluwarsa dan otomatis menyarankan resep berdasarkan bahan yang tersisa di dalamnya.",
+      "image": "https://i.ibb.co/Kx4GwLz5/High-Tech-Smart-Kitchens.png",
+      "thumbnail": "https://i.ibb.co/m5ZB8XFR/High-Tech-Smart-Kitchens.png",
+      "slug": "panduan-membuat-smart-kitchen-yang-efisien-dan-hemat-energi",
+      "createdAt": "2026-02-20T07:18:37.101Z"
+    },
+    {
+      "id": "db1c",
+      "title": "Thrifting Premium: Mengapa Pakaian Bekas Menjadi Simbol Status Baru?",
+      "categoryId": "5d03",
+      "shortDescription": "Pergeseran pandangan terhadap pakaian bekas yang kini dianggap sebagai langkah etis sekaligus eksklusif dalam berbusana.",
+      "content": "Thrifting bukan lagi tentang mencari harga termurah, melainkan tentang berburu barang unik yang tidak lagi diproduksi. Di tahun 2026, memakai baju vintage dari tahun 90-an dianggap lebih bergengsi daripada membeli koleksi fast-fashion terbaru.\n\nNilai Eksklusivitas\nBanyak kolektor fashion kini beralih ke pasar barang bekas untuk mencari material berkualitas tinggi yang jarang ditemukan di era produksi massal saat ini. Selain itu, aspek keberlanjutan menjadi alasan utama mengapa Gen Z bangga memamerkan hasil buruan mereka di media sosial.",
+      "image": "https://i.ibb.co/C5WphWgh/thrifting.jpg",
+      "thumbnail": "https://i.ibb.co/zhNWGNpG/thrifting.jpg",
+      "slug": "thrifting-premium-mengapa-pakaian-bekas-menjadi-simbol-status-baru",
+      "createdAt": "2026-02-20T07:21:14.660Z"
+    },
+    {
+      "id": "a0c4",
+      "title": "Sisi Gelap Kemudahan AI: Tantangan Etika dan Hak Cipta Digital",
+      "categoryId": "9328",
+      "shortDescription": "Menggali lebih dalam tentang perdebatan kepemilikan karya yang dihasilkan oleh kecerdasan buatan di mata hukum internasional.",
+      "content": "Saat AI mampu menghasilkan gambar dan tulisan yang menyerupai manusia, pertanyaan besar muncul: Siapa pemilik aslinya? Tahun ini, banyak seniman mulai menuntut perlindungan atas gaya artistik mereka agar tidak \"dipanen\" tanpa izin oleh model AI.\n\nRegulasi yang Tertinggal\nPemerintah di berbagai negara masih berupaya merumuskan hukum yang adil. Sementara itu, teknologi watermarking digital menjadi solusi sementara untuk membedakan mana karya buatan manusia asli dan mana yang hasil olahan mesin.",
+      "image": "https://i.ibb.co/bjjyHjWF/4-11.webp",
+      "thumbnail": "https://i.ibb.co/4wwDswm2/4-11.webp",
+      "slug": "sisi-gelap-kemudahan-ai-tantangan-etika-dan-hak-cipta-digital",
+      "createdAt": "2026-02-20T07:22:10.061Z"
+    },
+    {
+      "id": "21e8",
+      "title": "Kebangkitan Podcasting Video: Mengapa Visual Kini Menjadi Kunci?",
+      "categoryId": "ac71",
+      "shortDescription": "Tren podcast tidak lagi hanya tentang audio. Kini, interaksi visual dan set studio yang estetik menjadi penentu jumlah penonton.",
+      "content": "Dulu kita hanya mendengarkan suara, sekarang kita \"menonton\" podcast. Platform streaming video telah mengubah cara kita mengonsumsi konten percakapan. Ekspresi wajah, bahasa tubuh, dan desain set studio kini menjadi bagian dari storytelling.\n\nFragmentasi Konten\nStrategi memotong podcast panjang menjadi klip pendek (Reels/TikTok) terbukti meningkatkan jangkauan audiens secara drastis. Inilah yang membuat industri hiburan kini lebih fokus pada pembuatan konten yang \"multi-format\".",
+      "image": "https://i.ibb.co/zTCf9yPF/video-podcasting-1536x864.jpg",
+      "thumbnail": "https://i.ibb.co/TxJhjVP1/video-podcasting-1536x864.jpg",
+      "slug": "kebangkitan-podcasting-video-mengapa-visual-kini-menjadi-kunci",
+      "createdAt": "2026-02-20T07:22:58.964Z"
+    },
+    {
+      "id": "f709",
+      "title": "Micro-Habits: Cara Kecil Mengubah Hidup Tanpa Perlu Motivasi Besar",
+      "categoryId": "8d24",
+      "shortDescription": "Membedah teknik pembentukan kebiasaan kecil yang konsisten untuk menciptakan perubahan jangka panjang yang permanen.",
+      "content": "Seringkali kita gagal berubah karena menetapkan target yang terlalu besar. Teknik Micro-Habits mengajarkan kita untuk memulai dari hal yang sangat mudah, misalnya hanya membaca satu halaman buku sebelum tidur atau melakukan satu kali push-up setiap hari.\n\nKekuatan Akumulasi\nRahasia dari teknik ini adalah menghilangkan hambatan mental. Saat sebuah tindakan terasa sangat mudah, otak tidak akan menolaknya. Dalam satu tahun, kebiasaan kecil ini akan terakumulasi menjadi perubahan identitas yang luar biasa.",
+      "image": "https://i.ibb.co/FbLLCzFj/micro-habits.webp",
+      "thumbnail": "https://i.ibb.co/TBxxdtsF/micro-habits.webp",
+      "slug": "micro-habits-cara-kecil-mengubah-hidup-tanpa-perlu-motivasi-besar",
+      "createdAt": "2026-02-20T07:23:54.308Z"
+    },
+    {
+      "id": "4853",
+      "title": "Slow Travel: Menikmati Perjalanan Tanpa Harus Mengejar Daftar Destinasi",
+      "categoryId": "4520",
+      "shortDescription": "Mengubah cara pandang saat berlibur; dari sekadar \"check-in\" di tempat wisata menjadi benar-benar tinggal dan membaur dengan lokal.",
+      "content": "Banyak pelancong mulai merasa lelah dengan gaya liburan yang terburu-buru. Slow Travel mengajak kita untuk tinggal lebih lama di satu kota, berbelanja di pasar tradisional, dan benar-benar merasakan ritme hidup penduduk setempat.\n\nKualitas di Atas Kuantitas\nAlih-alih mengunjungi 5 kota dalam seminggu, cobalah menetap di satu desa selama 7 hari. Anda akan menemukan sudut-sudut kota yang tidak masuk di buku panduan manapun dan pulang dengan cerita yang lebih bermakna.",
+      "image": "https://i.ibb.co/zq6KcN2/slow-tourism.jpg",
+      "thumbnail": "https://i.ibb.co/tVLyf32/slow-tourism.jpg",
+      "slug": "slow-travel-menikmati-perjalanan-tanpa-harus-mengejar-daftar-destinasi",
+      "createdAt": "2026-02-20T07:24:36.773Z"
     }
   ],
   "categories": [
@@ -71,33 +174,23 @@
     },
     {
       "id": "9328",
-      "name": "Techs",
-      "slug": "techs"
+      "name": "Technology",
+      "slug": "technology"
     },
     {
-      "id": "a803",
-      "name": "asd",
-      "slug": "asd"
+      "id": "ac71",
+      "name": "Entertaiment",
+      "slug": "entertaiment"
     },
     {
-      "id": "e08e",
-      "name": "zxcas",
-      "slug": "zxcas"
+      "id": "8d24",
+      "name": "Lifestyle",
+      "slug": "lifestyle"
     },
     {
-      "id": "8731",
-      "name": "asxcasedq",
-      "slug": "asxcasedq"
-    },
-    {
-      "id": "ccc8",
-      "name": "11",
-      "slug": "11"
-    },
-    {
-      "id": "12dc",
-      "name": "rte3r",
-      "slug": "rte3r"
+      "id": "4520",
+      "name": "Travel",
+      "slug": "travel"
     }
   ],
   "users": [

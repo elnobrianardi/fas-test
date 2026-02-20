@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthStore } from "@/stores/authStore";
-import { Github, Mail, Lock } from "lucide-react";
+import { Github, Mail, Lock, Eye, EyeClosed } from "lucide-react";
 import { toast } from "sonner";
 import { Link } from "react-router-dom";
 
@@ -24,37 +24,40 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleLogin = async (e: React.FormEvent) => {
-  e.preventDefault();
-  setIsLoading(true);
+    e.preventDefault();
+    setIsLoading(true);
 
-  try {
-    // Cari user berdasarkan email
-    const response = await fetch(`http://localhost:5000/users?email=${email}`);
-    const users = await response.json();
+    try {
+      // Cari user berdasarkan email
+      const response = await fetch(
+        `http://localhost:5000/users?email=${email}`,
+      );
+      const users = await response.json();
 
-    if (users.length > 0 && users[0].password === password) {
-      // Login Sukses
-      login({
-        id: users[0].id,
-        email: users[0].email,
-        name: users[0].name,
-      });
-      toast.success(`Selamat datang, ${users[0].name}!`);
-      navigate('/admin/dashboard');
-    } else {
-      toast.error("Email atau Password salah!");
+      if (users.length > 0 && users[0].password === password) {
+        // Login Sukses
+        login({
+          id: users[0].id,
+          email: users[0].email,
+          name: users[0].name,
+        });
+        toast.success(`Selamat datang, ${users[0].name}!`);
+        navigate("/admin/dashboard");
+      } else {
+        toast.error("Email atau Password salah!");
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("Terjadi kesalahan sistem");
+    } finally {
+      setIsLoading(false);
     }
-  } catch (error) {
-    console.error(error);
-    toast.error("Terjadi kesalahan sistem");
-  } finally {
-    setIsLoading(false);
-  }
-};
+  };
 
-// Social Login (simulasi)
+  // Social Login (simulasi)
   const handleSocialLogin = (platform: string) => {
     toast.info(`Login dengan ${platform}...`);
     login({
@@ -108,13 +111,24 @@ const Login = () => {
               <div className="relative">
                 <Lock className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
                 <Input
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   required
                   placeholder="••••••••"
                   className="pl-10"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 top-3 text-muted-foreground hover:text-zinc-700 transition-colors"
+                >
+                  {showPassword ? (
+                    <Eye className="h-4 w-4" />
+                  ) : (
+                    <EyeClosed className="h-4 w-4" />
+                  )}
+                </button>
               </div>
             </div>
 

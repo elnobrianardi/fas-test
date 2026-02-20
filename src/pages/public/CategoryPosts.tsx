@@ -73,7 +73,7 @@ const CategoryPosts = () => {
               >
                 <div className="aspect-video bg-zinc-100 overflow-hidden relative">
                   <img 
-                    src={post.thumbnail || post.image || `https://picsum.photos/seed/${post.id}/600/400`}
+                    src={post.image || `https://picsum.photos/seed/${post.id}/600/400`}
                     alt={post.title}
                     className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300"
                   />

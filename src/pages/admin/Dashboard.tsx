@@ -7,10 +7,16 @@ import {
   Clock, 
   ArrowUpRight 
 } from "lucide-react";
+import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 const Dashboard = () => {
-  const { posts } = usePostStore();
+  const { posts, fetchPosts } = usePostStore();
   const { categories } = useCategoryStore();
+
+  useEffect(() => {
+    fetchPosts();
+  }, [fetchPosts])
 
   const totalPosts = posts.length;
   const totalCategories = categories.length;
@@ -68,9 +74,9 @@ const Dashboard = () => {
             <h3 className="font-semibold flex items-center gap-2">
               <Clock size={18} className="text-zinc-400" /> Recent Posts
             </h3>
-            <button className="text-xs text-orange-500 font-medium flex items-center hover:underline">
+            <Link to="/admin/posts" className="text-xs text-orange-500 font-medium flex items-center hover:underline">
               View All <ArrowUpRight size={14} />
-            </button>
+            </Link>
           </div>
           <div className="divide-y">
             {latestPosts.length > 0 ? (

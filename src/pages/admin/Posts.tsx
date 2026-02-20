@@ -401,7 +401,6 @@ const Posts = () => {
                     .replace(/[\s_-]+/g, "-")
                     .replace(/^-+|-+$/g, "");
 
-                  // 3. Kirim ke API
                   await updatePost(editingPost.id, { ...editingPost, slug });
 
                   setEditingPost(null);

@@ -1,4 +1,4 @@
-import { create } from 'zustand';
+import { create } from "zustand";
 
 export interface Post {
   id: string;
@@ -7,21 +7,21 @@ export interface Post {
   content: string;
   categoryId: string;
   image: string;
-  thumbnail: string,
+  thumbnail: string;
   createdAt: string;
-  shortDescription: string
+  shortDescription: string;
 }
 
 interface PostState {
   posts: Post[];
   isFetching: boolean;
   fetchPosts: () => Promise<void>;
-  addPost: (data: Omit<Post, 'id' | 'createdAt'>) => Promise<void>;
+  addPost: (data: Omit<Post, "id" | "createdAt">) => Promise<void>;
   deletePost: (id: string) => Promise<void>;
-    updatePost: (id: string, data: Partial<Post>) => Promise<void>;
+  updatePost: (id: string, data: Partial<Post>) => Promise<void>;
 }
 
-const API_URL = "http://localhost:5000/posts"; 
+const API_URL = "http://localhost:5000/posts";
 
 export const usePostStore = create<PostState>((set) => ({
   posts: [],
@@ -32,10 +32,15 @@ export const usePostStore = create<PostState>((set) => ({
     try {
       const response = await fetch(API_URL);
       const data = await response.json();
-      
-      console.log("Data Fetch Posts:", data);
 
-      set({ posts: Array.isArray(data) ? data : [] });
+      const sortedData = data.sort(
+        (a: Post, b: Post) =>
+          new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+      );
+
+      console.log("Data Fetch Posts:", sortedData);
+
+      set({ posts: Array.isArray(sortedData) ? sortedData : [] });
     } catch (error) {
       console.error("Gagal fetch posts:", error);
       set({ posts: [] });
@@ -53,11 +58,11 @@ export const usePostStore = create<PostState>((set) => ({
         createdAt: new Date().toISOString(),
       }),
     });
-    
+
     if (!response.ok) throw new Error("Gagal simpan post");
-    
+
     const savedPost = await response.json();
-    
+
     set((state) => ({ posts: [savedPost, ...state.posts] }));
   },
 
@@ -67,14 +72,14 @@ export const usePostStore = create<PostState>((set) => ({
     set((state) => ({ posts: state.posts.filter((p) => p.id !== id) }));
   },
 
-updatePost: async (id, data) => {
-  await fetch(`http://localhost:5000/posts/${id}`, {
-    method: "PATCH",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data),
-  });
-  set((state) => ({
-    posts: state.posts.map((p) => (p.id === id ? { ...p, ...data } : p))
-  }));
-},
+  updatePost: async (id, data) => {
+    await fetch(`http://localhost:5000/posts/${id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+    set((state) => ({
+      posts: state.posts.map((p) => (p.id === id ? { ...p, ...data } : p)),
+    }));
+  },
 }));
