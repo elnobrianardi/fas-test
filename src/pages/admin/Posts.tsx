@@ -109,10 +109,10 @@ const Posts = () => {
 
   return (
     <div className="space-y-6">
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
           <h1 className="text-2xl font-bold">All Posts</h1>
-          <p className="text-muted-foreground text-sm">
+          <p className="text-muted-foreground text-sm hidden sm:block">
             Manage your blog articles.
           </p>
         </div>
@@ -246,7 +246,7 @@ const Posts = () => {
               disabled={currentPage === 1 || isFetching}
               onClick={() => setCurrentPage((prev) => prev - 1)}
             >
-              <ChevronLeft size={16} className="mr-1" /> Previous
+              <ChevronLeft size={16} className="mr-1" /> <span className="hidden sm:inline">Previous</span>
             </Button>
             <Button
               variant="outline"
@@ -256,7 +256,7 @@ const Posts = () => {
               }
               onClick={() => setCurrentPage((prev) => prev + 1)}
             >
-              Next <ChevronRight size={16} className="ml-1" />
+              <span className="hidden sm:inline">Next</span> <ChevronRight size={16} className="ml-1" />
             </Button>
           </div>
         </div>

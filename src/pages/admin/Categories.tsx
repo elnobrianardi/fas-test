@@ -105,10 +105,10 @@ const Categories = () => {
 
   return (
     <div className="space-y-6">
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
           <h1 className="text-2xl font-bold tracking-tight">Categories</h1>
-          <p className="text-muted-foreground text-sm">Kelola kategori untuk artikel blog kamu.</p>
+          <p className="text-muted-foreground text-sm hidden sm:block">Kelola kategori untuk artikel blog kamu.</p>
         </div>
 
         <Dialog open={isOpen} onOpenChange={setIsOpen}>
@@ -224,14 +224,14 @@ const Categories = () => {
               disabled={currentPage === 1 || isFetching}
               onClick={() => setCurrentPage(prev => prev - 1)}
             >
-              <ChevronLeft size={16} className="mr-1" /> Previous
+              <ChevronLeft size={16} className="mr-1" /> <span className="hidden sm:inline">Previous</span>
             </Button>
             <Button
               variant="outline" size="sm"
               disabled={currentPage === totalPages || totalPages === 0 || isFetching}
               onClick={() => setCurrentPage(prev => prev + 1)}
             >
-              Next <ChevronRight size={16} className="ml-1" />
+              <span className="hidden sm:inline">Next</span> <ChevronRight size={16} className="ml-1" />
             </Button>
           </div>
         </div>

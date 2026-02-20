@@ -165,10 +165,72 @@ const AdminLayout = () => {
         </div>
       </main>
 
-      {/* Mobile Drawer Overlay (Opsional) */}
+      {/* Mobile Sidebar (Drawer) */}
+      <aside
+        className={`fixed inset-y-0 left-0 z-[60] w-72 bg-sidebar text-sidebar-foreground transform transition-transform duration-300 ease-in-out md:hidden shadow-2xl flex flex-col ${
+          isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"
+        }`}
+      >
+        <div className="p-8">
+          <div className="flex items-center justify-between">
+            <Link to="/" className="flex items-center gap-3">
+              <div className="h-10 w-10 bg-primary rounded-lg flex items-center justify-center shadow-lg">
+                <span className="text-white font-black text-xl italic">F</span>
+              </div>
+              <div>
+                <h1 className="font-bold text-lg text-white leading-tight">
+                  FAMOUS
+                </h1>
+                <p className="text-[10px] text-primary font-bold uppercase opacity-80">
+                  Allstars CMS
+                </p>
+              </div>
+            </Link>
+          </div>
+        </div>
+
+        <Separator className="bg-sidebar-border opacity-50 mb-6 mx-8 w-auto" />
+
+        <nav className="flex-1 px-4 space-y-1.5">
+          {menuItems.map((item) => {
+            const isActive = location.pathname === item.path;
+            return (
+              <Link
+                key={item.path}
+                to={item.path}
+                onClick={() => setIsMobileMenuOpen(false)} 
+                className={`flex items-center gap-3 px-4 py-3.5 rounded-xl transition-all ${
+                  isActive
+                    ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20"
+                    : "text-zinc-400 hover:bg-sidebar-accent hover:text-white"
+                }`}
+              >
+                <item.icon size={20} />
+                <span className="font-medium text-sm">{item.name}</span>
+              </Link>
+            );
+          })}
+        </nav>
+
+        <div className="p-6 mt-auto">
+          <Button
+            variant="ghost"
+            onClick={() => {
+              setIsMobileMenuOpen(false);
+              handleLogout();
+            }}
+            className="w-full justify-start gap-3 text-zinc-400 hover:text-red-400 hover:bg-red-500/10 h-12 rounded-xl"
+          >
+            <LogOut size={20} />
+            <span className="font-semibold text-sm">Sign Out</span>
+          </Button>
+        </div>
+      </aside>
+
+      {/* Mobile Drawer Overlay */}
       {isMobileMenuOpen && (
         <div
-          className="fixed inset-0 z-50 bg-black/50 md:hidden"
+          className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm md:hidden"
           onClick={() => setIsMobileMenuOpen(false)}
         />
       )}
