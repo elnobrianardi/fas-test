@@ -7,7 +7,9 @@ export interface Post {
   content: string;
   categoryId: string;
   image: string;
+  thumbnail: string,
   createdAt: string;
+  shortDescription: string
 }
 
 interface PostState {

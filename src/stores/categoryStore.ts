@@ -80,7 +80,7 @@ export const useCategoryStore = create<CategoryState>((set, get) => ({
   try {
     const slug = name.toLowerCase().replace(/\s+/g, '-');
     const response = await fetch(`http://localhost:5000/categories/${id}`, {
-      method: "PATCH", // Mengupdate sebagian data
+      method: "PATCH", 
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name, slug }),
     });
@@ -97,7 +97,7 @@ export const useCategoryStore = create<CategoryState>((set, get) => ({
     }));
   } catch (error) {
     console.error(error);
-    throw error; // Lempar error supaya catch di komponen Categories bisa menangkapnya
+    throw error; 
   }
 },
 }));

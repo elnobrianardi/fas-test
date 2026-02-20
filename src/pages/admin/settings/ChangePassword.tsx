@@ -16,7 +16,7 @@ const ChangePassword = () => {
   const handleUpdatePassword = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // --- VALIDASI STANDAR ---
+    // VALIDASI STANDAR
     if (newPassword.length < 6) {
       return toast.error("Password baru minimal 6 karakter!");
     }
@@ -31,18 +31,18 @@ const ChangePassword = () => {
     const toastId = toast.loading("Memverifikasi data...");
 
     try {
-      // 1. Ambil data user terbaru dari DB untuk cek password lama
+      // Ambil data user terbaru dari DB untuk cek password lama
       const checkRes = await fetch(`http://localhost:5000/users/${user?.id}`);
       const userData = await checkRes.json();
 
-      // 2. Validasi Password Lama
+      // Validasi password lama
       if (userData.password !== oldPassword) {
         toast.error("Password lama salah!", { id: toastId });
         setIsLoading(false);
         return;
       }
 
-      // 3. Jika oke, baru Update ke Password Baru
+      // Jika oke, update ke assword Baru
       const updateRes = await fetch(`http://localhost:5000/users/${user?.id}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
@@ -51,7 +51,6 @@ const ChangePassword = () => {
 
       if (updateRes.ok) {
         toast.success("Password berhasil diperbarui!", { id: toastId });
-        // Reset form
         setOldPassword('');
         setNewPassword('');
         setConfirmPassword('');
@@ -75,7 +74,7 @@ const ChangePassword = () => {
         </CardHeader>
         <CardContent>
           <form onSubmit={handleUpdatePassword} className="space-y-4">
-            {/* OLD PASSWORD */}
+            {/* Old password */}
             <div className="space-y-2">
               <label className="text-sm font-medium">Password Lama</label>
               <Input 
@@ -89,7 +88,7 @@ const ChangePassword = () => {
 
             <hr className="my-2" />
 
-            {/* NEW PASSWORD */}
+            {/* New password */}
             <div className="space-y-2">
               <label className="text-sm font-medium">Password Baru</label>
               <Input 
@@ -101,7 +100,7 @@ const ChangePassword = () => {
               />
             </div>
 
-            {/* CONFIRM NEW PASSWORD */}
+            {/* Confirm password */}
             <div className="space-y-2">
               <label className="text-sm font-medium">Konfirmasi Password Baru</label>
               <Input 

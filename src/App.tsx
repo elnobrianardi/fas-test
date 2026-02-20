@@ -10,12 +10,8 @@ import CreatePost from "./components/CreatePost";
 import PostDetail from "./pages/public/PostDetail";
 import Register from "./pages/Auth/Register";
 import ChangePassword from "./pages/admin/settings/ChangePassword";
+import CategoryPosts from "./pages/public/CategoryPosts";
 
-const CategoryPosts = () => (
-  <div className="p-8">
-    <h1>Posts by Category</h1>
-  </div>
-);
 const Dashboard = () => (
   <div className="p-8">
     <h1>CMS Dashboard</h1>
