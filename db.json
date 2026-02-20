@@ -22,7 +22,25 @@
       "categoryId": "5d03",
       "content": "asd",
       "slug": "sad",
-      "createdAt": "2026-02-19T09:20:39.341Z"
+      "createdAt": "2026-02-19T09:20:39.341Z",
+      "image": "https://i.ibb.co/n8s9xTvq/bitzaro2.png"
+    },
+    {
+      "id": "4430",
+      "title": "fsa",
+      "categoryId": "9328",
+      "content": "asdas",
+      "slug": "fsa",
+      "createdAt": "2026-02-20T02:13:54.297Z"
+    },
+    {
+      "id": "cb5f",
+      "title": "qwe asdzxc",
+      "categoryId": "5d03",
+      "content": "asd",
+      "image": "https://i.ibb.co/201zMgvR/edusity-3.png",
+      "slug": "qwe-asdzxc",
+      "createdAt": "2026-02-20T02:18:29.729Z"
     }
   ],
   "categories": [
@@ -43,6 +61,12 @@
       "email": "admin@fas.id",
       "password": "password123",
       "name": "Admin FAS"
+    },
+    {
+      "id": "e31a",
+      "name": "tes1",
+      "email": "tes@tes.id",
+      "password": "123123"
     }
   ]
 }

@@ -6,6 +6,7 @@ export interface Post {
   slug: string;
   content: string;
   categoryId: string;
+  image: string;
   createdAt: string;
 }
 
