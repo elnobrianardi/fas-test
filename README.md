@@ -4,11 +4,6 @@ Dashboard Admin modern dan responsif untuk manajemen konten blog. Proyek ini dib
 
 ## 🔗 Repository
 - **GitHub:** [https://github.com/elnobrianardi/fas-test.git](https://github.com/elnobrianardi/fas-test.git)
-
-## 🌐 Live Demo
-- **URL:** [https://fas-test-vert.vercel.app/](https://fas-test-vert.vercel.app/)
-> **Catatan:** Aplikasi telah di-deploy di **Vercel** dengan konfigurasi `vercel.json` untuk menangani client-side routing.
-
 ---
 
 ## 🛠️ Tech Stack
