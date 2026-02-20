@@ -205,6 +205,12 @@
       "name": "tes1",
       "email": "tes@tes.id",
       "password": "123123"
+    },
+    {
+      "id": "c33f",
+      "name": "wahyu santoso",
+      "email": "wahyu@gmail.com",
+      "password": "wahyu"
     }
   ]
 }

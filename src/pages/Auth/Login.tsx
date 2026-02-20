@@ -26,6 +26,15 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
+  const formatName = (name: string) => {
+    if (!name) return "Admin FAS";
+    return name
+      .toLowerCase()
+      .split(" ")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+  };
+
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
@@ -38,13 +47,14 @@ const Login = () => {
       const users = await response.json();
 
       if (users.length > 0 && users[0].password === password) {
+        const cleanName = formatName(users[0].name);
         // Login Sukses
         login({
           id: users[0].id,
           email: users[0].email,
-          name: users[0].name,
+          name: cleanName,
         });
-        toast.success(`Selamat datang, ${users[0].name}!`);
+        toast.success(`Selamat datang, ${cleanName}!`);
         navigate("/admin/dashboard");
       } else {
         toast.error("Email atau Password salah!");
@@ -59,13 +69,22 @@ const Login = () => {
 
   // Social Login (simulasi)
   const handleSocialLogin = (platform: string) => {
+    setIsLoading(true);
+    const dummyName = formatName(`user ${platform}`);
+
     toast.info(`Login dengan ${platform}...`);
-    login({
-      id: "2",
-      email: "elno@example.com",
-      name: `User ${platform}`,
-    });
-    navigate("/admin/dashboard");
+
+    setTimeout(() => {
+      login({
+        id: "2",
+        email: "elno@example.com",
+        name: dummyName,
+      });
+
+      setIsLoading(false);
+      toast.success(`Selamat datang, ${dummyName}!`);
+      navigate("/admin/dashboard");
+    }, 1000);
   };
 
   return (
