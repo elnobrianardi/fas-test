@@ -15,6 +15,7 @@ interface CategoryState {
   fetchCategories: () => Promise<void>;
   addCategory: (name: string) => Promise<void>;
   deleteCategory: (id: string) => Promise<void>;
+  updateCategory: (id: string, name: string) => Promise<void>;
 }
 
 const API_URL = "http://localhost:5000/categories";
@@ -74,4 +75,29 @@ export const useCategoryStore = create<CategoryState>((set, get) => ({
       set({ isLoading: false });
     }
   },
+
+  updateCategory: async (id: string, name: string) => {
+  try {
+    const slug = name.toLowerCase().replace(/\s+/g, '-');
+    const response = await fetch(`http://localhost:5000/categories/${id}`, {
+      method: "PATCH", // Mengupdate sebagian data
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, slug }),
+    });
+
+    if (!response.ok) throw new Error("Gagal mengupdate ke server");
+
+    const updatedData = await response.json();
+
+    // Update state lokal supaya UI berubah seketika
+    set((state) => ({
+      categories: state.categories.map((cat) => 
+        cat.id === id ? updatedData : cat
+      ),
+    }));
+  } catch (error) {
+    console.error(error);
+    throw error; // Lempar error supaya catch di komponen Categories bisa menangkapnya
+  }
+},
 }));

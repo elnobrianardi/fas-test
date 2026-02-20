@@ -15,6 +15,7 @@ interface PostState {
   fetchPosts: () => Promise<void>;
   addPost: (data: Omit<Post, 'id' | 'createdAt'>) => Promise<void>;
   deletePost: (id: string) => Promise<void>;
+    updatePost: (id: string, data: Partial<Post>) => Promise<void>;
 }
 
 const API_URL = "http://localhost:5000/posts"; 
@@ -62,4 +63,15 @@ export const usePostStore = create<PostState>((set) => ({
     if (!response.ok) throw new Error("Gagal hapus post");
     set((state) => ({ posts: state.posts.filter((p) => p.id !== id) }));
   },
+
+updatePost: async (id, data) => {
+  await fetch(`http://localhost:5000/posts/${id}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+  set((state) => ({
+    posts: state.posts.map((p) => (p.id === id ? { ...p, ...data } : p))
+  }));
+},
 }));

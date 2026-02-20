@@ -2,16 +2,16 @@
   "posts": [
     {
       "id": "8eca",
-      "title": "asd",
-      "categoryId": "9328",
-      "content": "asd",
-      "slug": "asd",
+      "title": "d",
+      "categoryId": "5d03",
+      "content": "asds",
+      "slug": "d",
       "createdAt": "2026-02-19T09:15:50.540Z"
     },
     {
       "id": "8bce",
       "title": "asd",
-      "categoryId": "9328",
+      "categoryId": "5d03",
       "content": "asd",
       "slug": "asd",
       "createdAt": "2026-02-19T09:16:22.325Z"
@@ -33,8 +33,8 @@
     },
     {
       "id": "9328",
-      "name": "Tech",
-      "slug": "tech"
+      "name": "Techs",
+      "slug": "techs"
     }
   ],
   "users": [

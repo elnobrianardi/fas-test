@@ -1,67 +1,108 @@
-import { useState, useEffect } from 'react';
-import { useCategoryStore } from '@/stores/categoryStore';
+import { useState, useEffect } from "react";
+import { useCategoryStore } from "@/stores/categoryStore";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogFooter } from "@/components/ui/dialog";
-import { Plus, Trash2, Tag, Loader2 } from "lucide-react"; 
-import { toast } from 'sonner';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  DialogFooter,
+} from "@/components/ui/dialog";
+import { Plus, Trash2, Tag, Loader2, Pencil } from "lucide-react";
+import { toast } from "sonner";
 
 const Categories = () => {
-  const { categories, fetchCategories, addCategory, deleteCategory, isFetching } = useCategoryStore();
-  
+  const {
+    categories,
+    fetchCategories,
+    addCategory,
+    deleteCategory,
+    updateCategory,
+    isFetching,
+  } = useCategoryStore();
+
   const [newCatName, setNewCatName] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [editingCat, setEditingCat] = useState<{
+    id: string;
+    name: string;
+  } | null>(null);
 
   useEffect(() => {
     fetchCategories();
   }, []);
 
   const handleAdd = async () => {
-  if (!newCatName.trim()) return toast.error("Name is required");
+    if (!newCatName.trim()) return toast.error("Name is required");
 
-  const categoryName = newCatName;
-  setIsOpen(false);
-  setNewCatName("");
+    const categoryName = newCatName;
+    setIsOpen(false);
+    setNewCatName("");
 
-  toast.promise(
-    (async () => {
-      const result = await addCategory(categoryName);
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      return result;
-    })(),
-    {
-      loading: 'Menyimpan kategori...',
-      success: () => `Kategori "${categoryName}" berhasil ditambahkan!`,
-      error: 'Gagal menambahkan kategori',
-    }
-  );
-};
+    toast.promise(
+      (async () => {
+        const result = await addCategory(categoryName);
+        await new Promise((resolve) => setTimeout(resolve, 1500));
+        return result;
+      })(),
+      {
+        loading: "Menyimpan kategori...",
+        success: () => `Kategori "${categoryName}" berhasil ditambahkan!`,
+        error: "Gagal menambahkan kategori",
+      },
+    );
+  };
 
   const handleDelete = async (id: string, name: string) => {
-  const toastId = toast.loading(`Menghapus ${name}...`);
+    const toastId = toast.loading(`Menghapus ${name}...`);
 
-  try {
-    await deleteCategory(id);
-    
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    try {
+      await deleteCategory(id);
 
-    toast.warning(`Kategori ${name} telah dihapus.`, {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
+      toast.warning(`Kategori ${name} telah dihapus.`, {
         id: toastId,
-      description: "Data telah dihapus dari database.",
-    });
-  } catch (error) {
-    toast.error("Gagal menghapus kategori", { id: toastId });
-  }
-};
+        description: "Data telah dihapus dari database.",
+      });
+    } catch (error) {
+      toast.error("Gagal menghapus kategori", { id: toastId });
+    }
+  };
+
+  const handleUpdate = async () => {
+    if (!editingCat?.name.trim()) return toast.error("Name is required");
+
+    const toastId = toast.loading("Updating category...");
+    try {
+      // Pastikan di store kamu sudah ada fungsi updateCategory
+      await updateCategory(editingCat.id, editingCat.name);
+      setEditingCat(null);
+      toast.success("Category updated!", { id: toastId });
+    } catch (error) {
+      toast.error("Failed to update", { id: toastId });
+    }
+  };
 
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <div>
           <h1 className="text-2xl font-bold tracking-tight">Categories</h1>
-          <p className="text-muted-foreground text-sm">Kelola kategori untuk artikel blog kamu.</p>
+          <p className="text-muted-foreground text-sm">
+            Kelola kategori untuk artikel blog kamu.
+          </p>
         </div>
 
         <Dialog open={isOpen} onOpenChange={setIsOpen}>
@@ -76,9 +117,11 @@ const Categories = () => {
             </DialogHeader>
             <div className="py-4 space-y-4">
               <div className="space-y-2">
-                <label className="text-sm font-medium text-zinc-700">Category Name</label>
-                <Input 
-                  placeholder="e.g. Technology, Fashion..." 
+                <label className="text-sm font-medium text-zinc-700">
+                  Category Name
+                </label>
+                <Input
+                  placeholder="e.g. Technology, Fashion..."
                   value={newCatName}
                   onChange={(e) => setNewCatName(e.target.value)}
                   disabled={isSubmitting}
@@ -86,11 +129,21 @@ const Categories = () => {
               </div>
             </div>
             <DialogFooter>
-              <Button variant="outline" onClick={() => setIsOpen(false)} disabled={isSubmitting}>
+              <Button
+                variant="outline"
+                onClick={() => setIsOpen(false)}
+                disabled={isSubmitting}
+              >
                 Cancel
               </Button>
-              <Button onClick={handleAdd} disabled={isSubmitting} className="bg-orange-500 hover:bg-orange-600">
-                {isSubmitting ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
+              <Button
+                onClick={handleAdd}
+                disabled={isSubmitting}
+                className="bg-orange-500 hover:bg-orange-600"
+              >
+                {isSubmitting ? (
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                ) : null}
                 Save Category
               </Button>
             </DialogFooter>
@@ -121,30 +174,49 @@ const Categories = () => {
               </TableRow>
             ) : categories.length === 0 ? (
               <TableRow>
-                <TableCell colSpan={4} className="h-24 text-center text-muted-foreground">
+                <TableCell
+                  colSpan={4}
+                  className="h-24 text-center text-muted-foreground"
+                >
                   No categories found.
                 </TableCell>
               </TableRow>
             ) : (
               categories.map((cat: any, index: number) => (
                 <TableRow key={cat.id}>
-                  <TableCell className="text-center text-muted-foreground">{index + 1}</TableCell>
+                  <TableCell className="text-center text-muted-foreground">
+                    {index + 1}
+                  </TableCell>
                   <TableCell className="font-medium">
                     <div className="flex items-center gap-2">
                       <Tag size={14} className="text-orange-500" />
                       {cat.name}
                     </div>
                   </TableCell>
-                  <TableCell className="text-zinc-500 font-mono text-xs italic">/{cat.slug}</TableCell>
+                  <TableCell className="text-zinc-500 font-mono text-xs italic">
+                    /{cat.slug}
+                  </TableCell>
                   <TableCell className="text-right">
-                    <Button 
-                      variant="ghost" 
-                      size="icon" 
-                      className="text-red-500 hover:text-red-600 hover:bg-red-50"
-                      onClick={() => handleDelete(cat.id, cat.name)}
-                    >
-                      <Trash2 size={18} />
-                    </Button>
+                    <div className="flex justify-end gap-2">
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="text-blue-500 hover:text-blue-600 hover:bg-blue-50"
+                        onClick={() =>
+                          setEditingCat({ id: cat.id, name: cat.name })
+                        }
+                      >
+                        <Pencil size={18} />
+                      </Button>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="text-red-500 hover:text-red-600 hover:bg-red-50"
+                        onClick={() => handleDelete(cat.id, cat.name)}
+                      >
+                        <Trash2 size={18} />
+                      </Button>
+                    </div>
                   </TableCell>
                 </TableRow>
               ))
@@ -152,6 +224,45 @@ const Categories = () => {
           </TableBody>
         </Table>
       </div>
+
+      {/* DIALOG EDIT CATEGORY */}
+      <Dialog
+        open={!!editingCat}
+        onOpenChange={(open) => !open && setEditingCat(null)}
+      >
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Edit Category</DialogTitle>
+          </DialogHeader>
+          <div className="py-4 space-y-4">
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-zinc-700">
+                Category Name
+              </label>
+              <Input
+                placeholder="Enter new name..."
+                value={editingCat?.name || ""}
+                onChange={(e) =>
+                  setEditingCat((prev) =>
+                    prev ? { ...prev, name: e.target.value } : null,
+                  )
+                }
+              />
+            </div>
+          </div>
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setEditingCat(null)}>
+              Cancel
+            </Button>
+            <Button
+              onClick={handleUpdate}
+              className="bg-orange-500 hover:bg-orange-600"
+            >
+              Update Category
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
